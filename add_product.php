@@ -57,7 +57,8 @@ if ($category_id == null || $category_id == false ||
             exit();
         }
     }
-/******************** End Image upload *******************/
+
+    /************************** End Image upload **************************/
     
     require_once('database.php');
 
