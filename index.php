@@ -43,13 +43,13 @@ $statement3->closeCursor();
 
 <!-- the head section -->
 <head>
-<title>My Guitar Shop</title>
+<title>PHP CRUD</title>
 <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <!-- the body section -->
 <body>
-<header><h1>Product Manager</h1></header>
+<header><h1>PHP CRUD</h1></header>
 <main>
 <h1>Product List</h1>
 
@@ -65,7 +65,7 @@ $statement3->closeCursor();
 </li>
 <?php endforeach; ?>
 </ul>
-</nav>          
+</nav>
 </aside>
 
 <section>
@@ -75,6 +75,7 @@ $statement3->closeCursor();
 <tr>
 <th>Image</th>
 <th>Name</th>
+<th>Code</th>
 <th>Price</th>
 <th>Delete</th>
 <th>Edit</th>
@@ -83,7 +84,8 @@ $statement3->closeCursor();
 <tr>
 <td><img src="image_uploads/<?php echo $product['productImage']; ?>" width="100px" height="100px" /></td>
 <td><?php echo $product['productName']; ?></td>
-<td class="right"><?php echo $product['listPrice']; ?></td>
+<td><?php echo $product['productCode']; ?></td>
+<td><?php echo $product['listPrice']; ?></td>
 <td><form action="delete_product.php" method="post"
 id="delete_product_form">
 <input type="hidden" name="product_id"
@@ -109,7 +111,7 @@ value="<?php echo $product['categoryID']; ?>">
 </main>
 
 <footer>
-<p>&copy; <?php echo date("Y"); ?> My Guitar Shop, Inc.</p>
+<p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
 </footer>
 </body>
 </html>

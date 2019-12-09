@@ -13,13 +13,13 @@ $statement->closeCursor();
 
 <!-- the head section -->
 <head>
-    <title>My Guitar Shop</title>
+    <title>PHP CRUD</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <!-- the body section -->
 <body>
-    <header><h1>Product Manager</h1></header>
+    <header><h1>PHP CRUD</h1></header>
 
     <main>
         <h1>Add Product</h1>
@@ -60,7 +60,7 @@ $statement->closeCursor();
     </main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> My Guitar Shop, Inc.</p>
+        <p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
     </footer>
 </body>
 </html>
