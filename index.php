@@ -1,7 +1,6 @@
 <?php
 // Connect to the database
 require_once('database.php');
-
 // Set the default category to the ID of 1
 if (!isset($category_id)) {
 $category_id = filter_input(INPUT_GET, 'category_id', 
@@ -10,7 +9,6 @@ if ($category_id == NULL || $category_id == FALSE) {
 $category_id = 1;
 }
 }
-
 // Get name for current category
 $queryCategory = "SELECT * FROM categories
 WHERE categoryID = :category_id";
@@ -20,7 +18,6 @@ $statement1->execute();
 $category = $statement1->fetch();
 $statement1->closeCursor();
 $category_name = $category['categoryName'];
-
 // Get all categories
 $queryAllCategories = 'SELECT * FROM categories
 ORDER BY categoryID';
@@ -28,7 +25,6 @@ $statement2 = $db->prepare($queryAllCategories);
 $statement2->execute();
 $categories = $statement2->fetchAll();
 $statement2->closeCursor();
-
 // Get records for selected category
 $queryRecords = "SELECT * FROM records
 WHERE categoryID = :category_id
@@ -41,19 +37,16 @@ $statement3->closeCursor();
 ?>
 <!DOCTYPE html>
 <html>
-
 <!-- the head section -->
 <head>
 <title>PHP CRUD</title>
 <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-
 <!-- the body section -->
 <body>
 <header><h1>PHP CRUD</h1></header>
 <main>
 <h1>Record List</h1>
-
 <aside>
 <!-- display a list of categories in the sidebar-->
 <h2>Categories</h2>
@@ -68,7 +61,6 @@ $statement3->closeCursor();
 </ul>
 </nav>
 </aside>
-
 <section>
 <!-- display a table of records from the database -->
 <h2><?php echo $category_name; ?></h2>
@@ -110,7 +102,6 @@ value="<?php echo $record['categoryID']; ?>">
 <p><a href="category_list.php">Edit Categories</a></p>
 </section>
 </main>
-
 <footer>
 <p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
 </footer>
