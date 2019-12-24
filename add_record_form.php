@@ -22,9 +22,9 @@ $statement->closeCursor();
     <header><h1>PHP CRUD</h1></header>
 
     <main>
-        <h1>Add Product</h1>
-        <form action="add_product.php" method="post" enctype="multipart/form-data"
-              id="add_product_form">
+        <h1>Add Record</h1>
+        <form action="add_record.php" method="post" enctype="multipart/form-data"
+              id="add_record_form">
 
             <label>Category:</label>
             <select name="category_id">
@@ -44,19 +44,19 @@ $statement->closeCursor();
             <input type="input" name="name">
             <br>
 
-            <label>List Price:</label>
+            <label>Price:</label>
             <input type="input" name="price">
             <br>            
 
             <label>Image:</label>
-            <input type="file" name="product_image" accept="image/*" />
+            <input type="file" name="image" accept="image/*" />
             <br>
             
             <label>&nbsp;</label>
-            <input type="submit" value="Add Product">
+            <input type="submit" value="Add Record">
             <br>
         </form>
-        <p><a href="index.php">View Product List</a></p>
+        <p><a href="index.php">Homepage</a></p>
     </main>
 
     <footer>

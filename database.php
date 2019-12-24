@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=localhost;dbname=guitar-shop-images';
+    $dsn = 'mysql:host=localhost;dbname=php-crud';
     $username = 'root';
     $password = 'root';
 

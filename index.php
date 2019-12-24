@@ -1,7 +1,8 @@
 <?php
+// Connect to the database
 require_once('database.php');
 
-// Get category ID
+// Set the default category to the ID of 1
 if (!isset($category_id)) {
 $category_id = filter_input(INPUT_GET, 'category_id', 
 FILTER_VALIDATE_INT);
@@ -28,14 +29,14 @@ $statement2->execute();
 $categories = $statement2->fetchAll();
 $statement2->closeCursor();
 
-// Get products for selected category
-$queryProducts = "SELECT * FROM products
+// Get records for selected category
+$queryRecords = "SELECT * FROM records
 WHERE categoryID = :category_id
-ORDER BY productID";
-$statement3 = $db->prepare($queryProducts);
+ORDER BY recordID";
+$statement3 = $db->prepare($queryRecords);
 $statement3->bindValue(':category_id', $category_id);
 $statement3->execute();
-$products = $statement3->fetchAll();
+$records = $statement3->fetchAll();
 $statement3->closeCursor();
 ?>
 <!DOCTYPE html>
@@ -51,10 +52,10 @@ $statement3->closeCursor();
 <body>
 <header><h1>PHP CRUD</h1></header>
 <main>
-<h1>Product List</h1>
+<h1>Record List</h1>
 
 <aside>
-<!-- display a list of categories -->
+<!-- display a list of categories in the sidebar-->
 <h2>Categories</h2>
 <nav>
 <ul>
@@ -69,7 +70,7 @@ $statement3->closeCursor();
 </aside>
 
 <section>
-<!-- display a table of products -->
+<!-- display a table of records from the database -->
 <h2><?php echo $category_name; ?></h2>
 <table>
 <tr>
@@ -80,33 +81,33 @@ $statement3->closeCursor();
 <th>Delete</th>
 <th>Edit</th>
 </tr>
-<?php foreach ($products as $product) : ?>
+<?php foreach ($records as $record) : ?>
 <tr>
-<td><img src="image_uploads/<?php echo $product['productImage']; ?>" width="100px" height="100px" /></td>
-<td><?php echo $product['productName']; ?></td>
-<td><?php echo $product['productCode']; ?></td>
-<td><?php echo $product['listPrice']; ?></td>
-<td><form action="delete_product.php" method="post"
-id="delete_product_form">
-<input type="hidden" name="product_id"
-value="<?php echo $product['productID']; ?>">
+<td><img src="image_uploads/<?php echo $record['image']; ?>" width="100px" height="100px" /></td>
+<td><?php echo $record['name']; ?></td>
+<td><?php echo $record['code']; ?></td>
+<td><?php echo $record['price']; ?></td>
+<td><form action="delete_record.php" method="post"
+id="delete_record_form">
+<input type="hidden" name="record_id"
+value="<?php echo $record['recordID']; ?>">
 <input type="hidden" name="category_id"
-value="<?php echo $product['categoryID']; ?>">
+value="<?php echo $record['categoryID']; ?>">
 <input type="submit" value="Delete">
 </form></td>
-<td><form action="edit_product_form.php" method="post"
-id="delete_product_form">
-<input type="hidden" name="product_id"
-value="<?php echo $product['productID']; ?>">
+<td><form action="edit_record_form.php" method="post"
+id="delete_record_form">
+<input type="hidden" name="record_id"
+value="<?php echo $record['recordID']; ?>">
 <input type="hidden" name="category_id"
-value="<?php echo $product['categoryID']; ?>">
+value="<?php echo $record['categoryID']; ?>">
 <input type="submit" value="Edit">
 </form></td>
 </tr>
 <?php endforeach; ?>
 </table>
-<p><a href="add_product_form.php">Add Product</a></p>
-<p><a href="category_list.php">List Categories</a></p>
+<p><a href="add_record_form.php">Add Record</a></p>
+<p><a href="category_list.php">Edit Categories</a></p>
 </section>
 </main>
 

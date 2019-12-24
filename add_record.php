@@ -1,6 +1,6 @@
 <?php
 
-// Get the product data
+// Get the data
 $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 $code = filter_input(INPUT_POST, 'code');
 $name = filter_input(INPUT_POST, 'name');
@@ -9,7 +9,7 @@ $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 // Validate inputs
 if ($category_id == null || $category_id == false ||
         $code == null || $name == null || $price == null || $price == false) {
-    $error = "Invalid product data. Check all fields and try again.";
+    $error = "Invalid data. Check all fields and try again.";
     include('error.php');
     exit();
 } else {
@@ -20,13 +20,13 @@ if ($category_id == null || $category_id == false ||
 
 // avoid notice
 
-    $imgFile = $_FILES['product_image']['name'];
-    $tmp_dir = $_FILES['product_image']['tmp_name'];
-    echo $_FILES['product_image']['tmp_name'];
-    $imgSize = $_FILES['product_image']['size'];
+    $imgFile = $_FILES['image']['name'];
+    $tmp_dir = $_FILES['image']['tmp_name'];
+    echo $_FILES['image']['tmp_name'];
+    $imgSize = $_FILES['image']['size'];
 
     if (empty($imgFile)) {
-        $product_image = "";
+        $image = "";
     } else {
         $upload_dir = 'image_uploads/'; // upload directory
 
@@ -34,13 +34,13 @@ if ($category_id == null || $category_id == false ||
         // valid image extensions
         $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
         // rename uploading image
-        $product_image = rand(1000, 1000000) . "." . $imgExt;
+        $image = rand(1000, 1000000) . "." . $imgExt;
         // allow valid image file formats
         if (in_array($imgExt, $valid_extensions)) {
         // Check file size '5MB'
             if ($imgSize < 5000000) {
-                if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $upload_dir . $product_image)) {
-                    echo "The file ". basename( $_FILES["product_image"]["name"]). " has been uploaded.";
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $upload_dir . $image)) {
+                    echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
                 } else {
                     $error =  "Sorry, there was an error uploading your file.";
                     include('error.php');
@@ -62,20 +62,20 @@ if ($category_id == null || $category_id == false ||
     
     require_once('database.php');
 
-    // Add the product to the database 
-    $query = "INSERT INTO products
-                 (categoryID, productCode, productName, listPrice, productImage)
+    // Add the records to the database 
+    $query = "INSERT INTO records
+                 (categoryID, code, name, price, image)
               VALUES
-                 (:category_id, :code, :name, :price, :product_image)";
+                 (:category_id, :code, :name, :price, :image)";
     $statement = $db->prepare($query);
     $statement->bindValue(':category_id', $category_id);
     $statement->bindValue(':code', $code);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':price', $price);
-    $statement->bindValue(':product_image', $product_image);
+    $statement->bindValue(':image', $image);
     $statement->execute();
     $statement->closeCursor();
 
-    // Display the Product List page
+    // Display the records List page
     include('index.php');
 }

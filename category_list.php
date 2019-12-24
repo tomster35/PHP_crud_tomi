@@ -14,17 +14,17 @@
 
 <!-- the head section -->
 <head>
-    <title>My Guitar Shop</title>
+    <title>PHP CRUD</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <!-- the body section -->
 <body>
-    <header><h1>Product Manager</h1></header>
+    <header><h1>PHP CRUD</h1></header>
 
     <main>
 
-    <h1>Category List</h1>
+    <h1>Categories</h1>
     <table>
         <tr>
             <th>Name</th>
@@ -35,7 +35,7 @@
             <td><?php echo $category['categoryName']; ?></td>
             <td>
                 <form action="delete_category.php" method="post"
-                      id="delete_product_form">
+                      id="delete_record_form">
                     <input type="hidden" name="category_id"
                            value="<?php echo $category['categoryID']; ?>">
                     <input type="submit" value="Delete">
@@ -55,11 +55,11 @@
         <input id="add_category_button" type="submit" value="Add">
     </form>
     <br>
-    <p><a href="index.php">List Products</a></p>
+    <p><a href="index.php">Homepage</a></p>
 
     </main>
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> My Guitar Shop, Inc.</p>
+        <p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
     </footer>
 </body>
 </html>
