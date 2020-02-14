@@ -1,12 +1,12 @@
 <?php
 // Get the data
 $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
-$score = filter_input(INPUT_POST, 'score');
+$style = filter_input(INPUT_POST, 'style');
 $name = filter_input(INPUT_POST, 'name');
 $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
 // Validate inputs
 if ($category_id == null || $category_id == false ||
-        $score == null || $name == null || $price == null || $price == false) {
+        $style == null || $name == null || $price == null || $price == false) {
     $error = "Invalid data. Check all fields and try again.";
     include('error.php');
     exit();
@@ -54,12 +54,12 @@ if ($category_id == null || $category_id == false ||
     require_once('database.php');
     // Add the records to the database 
     $query = "INSERT INTO records
-                 (categoryID, score, name, price, image)
+                 (categoryID, style, name, price, image)
               VALUES
-                 (:category_id, :score, :name, :price, :image)";
+                 (:category_id, :style, :name, :price, :image)";
     $statement = $db->prepare($query);
     $statement->bindValue(':category_id', $category_id);
-    $statement->bindValue(':score', $score);
+    $statement->bindValue(':style', $style);
     $statement->bindValue(':name', $name);
     $statement->bindValue(':price', $price);
     $statement->bindValue(':image', $image);
