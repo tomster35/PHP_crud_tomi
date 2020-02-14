@@ -33,8 +33,8 @@ $statement->closeCursor();
             </select>
             <br>
 
-            <label>Code:</label>
-            <input type="input" name="code">
+            <label>score:</label>
+            <input type="input" name="score">
             <br>
 
             <label>Name:</label>

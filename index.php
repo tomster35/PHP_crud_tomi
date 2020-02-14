@@ -40,7 +40,8 @@ $statement3->closeCursor();
 <!-- the head section -->
 <head>
 <title>PHP CRUD</title>
-<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="styles/main.scss">
+<link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <!-- the body section -->
 <body>
@@ -68,7 +69,7 @@ $statement3->closeCursor();
 <tr>
 <th>Image</th>
 <th>Name</th>
-<th>Code</th>
+<th>Score</th>
 <th>Price</th>
 <th>Delete</th>
 <th>Edit</th>
@@ -77,7 +78,7 @@ $statement3->closeCursor();
 <tr>
 <td><img src="image_uploads/<?php echo $record['image']; ?>" width="100px" height="100px" /></td>
 <td><?php echo $record['name']; ?></td>
-<td><?php echo $record['code']; ?></td>
+<td><?php echo $record['score']; ?></td>
 <td><?php echo $record['price']; ?></td>
 <td><form action="delete_record.php" method="post"
 id="delete_record_form">
