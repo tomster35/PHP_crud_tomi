@@ -105,8 +105,7 @@ value="<?php echo $record['categoryID']; ?>">
 <p><a href="category_list.php">Edit Categories</a></p>
 </section>
 </main>
-<footer>
-<p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
-</footer>
+
+<?php include "./include/footer.php";  ?>
 </body>
 </html>

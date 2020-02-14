@@ -12,8 +12,6 @@
         <h2 class="top">Error</h2>
         <p><?php echo $error; ?></p>
     </main>
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> PHP CRUD, Inc.</p>
-    </footer>
+
 </body>
 </html>
