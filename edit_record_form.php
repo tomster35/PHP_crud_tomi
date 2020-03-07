@@ -14,12 +14,12 @@ $statement->closeCursor();
 <html>
 <!-- the head section -->
 <head>
-    <title>PHP CRUD</title>
+    <title>Dance Workshop</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <!-- the body section -->
 <body>
-    <header><h1>PHP CRUD</h1></header>
+    <header><h1>Dance Workshop</h1></header>
     <main>
         <h1>Edit record</h1>
         <form action="edit_record.php" method="post" enctype="multipart/form-data"

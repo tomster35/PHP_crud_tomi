@@ -39,18 +39,20 @@ $statement3->closeCursor();
 <html>
 <!-- the head section -->
 <head>
-<title>PHP CRUD</title>
+<title>Dance Workshops</title>
 <link rel="stylesheet" type="text/css" href="styles/main.scss">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <!-- the body section -->
 <body>
-<header><h1>PHP CRUD</h1></header>
+<header><h1>Dance Workshops</h1></header>
 <main>
-<h1>Record List</h1>
+<h1>Dance List</h1>
 <aside>
 <!-- display a list of categories in the sidebar-->
+
 <h2>Categories</h2>
+<a href="index.php"> Home page</a>
 <nav>
 <ul>
 <?php foreach ($categories as $category) : ?>
@@ -101,6 +103,7 @@ value="<?php echo $record['categoryID']; ?>">
 </tr>
 <?php endforeach; ?>
 </table>
+
 <p><a href="add_record_form.php">Add Record</a></p>
 <p><a href="category_list.php">Edit Categories</a></p>
 </section>
